@@ -106,6 +106,9 @@ function handleMessage(sender_psid, received_message) {
             }
         }
     }
+
+    // Send the response message
+    callSendAPI(sender_psid, response);
 }
 
 // Handles messaging_postbacks events
