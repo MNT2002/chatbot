@@ -132,7 +132,6 @@ async function handlePostback(sender_psid, received_postback) {
             break;
         case 'GET_STARTED':
             await chatbotService.handleGetStarted();
-            response = { "text": "Hi. Chào mừng bạn" }
             break;
 
         default:
