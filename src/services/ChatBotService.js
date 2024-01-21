@@ -32,7 +32,7 @@ let handleGetStarted = (sender_psid) => {
     return new Promise(async (resolve, reject) => {
         try {
             let response = { "text": "Hi. Chào mừng bạn!" }
-            await this.callSendAPI(sender_psid, response)
+            await callSendAPI(sender_psid, response)
             resolve('Done');
         } catch (error) {
             reject(error);
