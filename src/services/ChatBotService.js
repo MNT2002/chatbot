@@ -712,6 +712,7 @@ let handleShowDetailRoom = (sender_psid) => {
 }
 
 module.exports = {
+    callSendAPI,
     handleGetStarted,
     handleSendMainMenu,
     handleSendLunchMainMenu,

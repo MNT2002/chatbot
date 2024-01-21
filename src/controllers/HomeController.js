@@ -167,7 +167,7 @@ async function handlePostback(sender_psid, received_postback) {
             await chatbotService.handleShowDetailRoom(sender_psid);
             break;
 
-            
+
         default:
             response = { "text": `Oop! I don't know responese with post back ${payload}` }
     }
@@ -282,6 +282,32 @@ let handleRerseveTable = (req, res) => {
     return res.render('reserve-table.ejs');
 }
 
+let handlePostReserveTable = async (req, res) => {
+    try {
+        let customerName = "";
+        if (req.body.customerName === "") {
+            customerName = "Để trống";
+        } else customerName = req.body.customerName;
+
+        let response1 = {
+            "text": `---Thông tin khách hàng đặt bàn---
+            \nHọ và tên: ${customerName}
+            \nĐịa chỉ email: ${req.body.email}
+            \nSố điện thoại: ${req.body.phoneNumber}`
+        }
+        
+        await chatbotService.callSendAPI(req.body.psid, response1);
+        return res.status(200).json({
+            message: 'Ok'
+        })
+    } catch (error) {
+        console.log('Lỗi post reserve table: ', error)
+        return res.status(500).json({
+            message: 'Server error'
+        })
+    }
+}
+
 module.exports = {
     getHomePage,
     postWebhook,
@@ -289,4 +315,5 @@ module.exports = {
     setupProfile,
     setupPersistentMenu,
     handleRerseveTable,
+    handlePostReserveTable,
 }
