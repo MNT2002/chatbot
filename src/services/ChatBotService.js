@@ -51,7 +51,7 @@ let getUserName = (sender_psid,) => {
 }
 
 
-getStartedTemplate = () => {
+let getStartedTemplate = () => {
     let response = {
         "attachment": {
             "type": "template",
