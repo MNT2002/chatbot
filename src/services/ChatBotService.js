@@ -4,7 +4,7 @@ import request from "request";
 
 const PAGE_ACCESS_TOKEN = process.env.PAGE_ACCESS_TOKEN
 
-let callSendAPI = (response) => {
+let callSendAPI = (sender_psid, response) => {
     // Construct the message body
     let request_body = {
         "recipient": {
@@ -28,11 +28,11 @@ let callSendAPI = (response) => {
     });
 }
 
-let handleGetStarted = () => {
+let handleGetStarted = (sender_psid) => {
     return new Promise(async (resolve, reject) => {
         try {
-            response = { "text": "Hi. Chào mừng bạn" }
-            await this.callSendAPI(response)
+            response = { "text": "Hi. Chào mừng bạn!" }
+            await this.callSendAPI(sender_psid, response)
             resolve('Done');
         } catch (error) {
             reject(error);
