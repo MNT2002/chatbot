@@ -257,7 +257,7 @@ let getLunchMainMenuTemplate = () => {
                     },
                     {
                         "title": "Quay trở lại",
-                        "subtitle": "QUay trở Lại Menu chính",
+                        "subtitle": "Quay trở lại Menu chính",
                         "image_url": IMAGE_BACK_MAIN_MENU,
                         "buttons": [
                             {
@@ -345,7 +345,7 @@ let getDinnerMainMenuTemplate = () => {
                     },
                     {
                         "title": "Quay trở lại",
-                        "subtitle": "QUay trở Lại Menu chính",
+                        "subtitle": "Quay trở lại Menu chính",
                         "image_url": IMAGE_BACK_MAIN_MENU,
                         "buttons": [
                             {
@@ -420,7 +420,7 @@ let getDetailViewAppetizerTemplate = () => {
                     },
                     {
                         "title": "Quay trở lại",
-                        "subtitle": "QUay trở Lại Menu chính",
+                        "subtitle": "Quay trở lại menu buổi trưa",
                         "image_url": IMAGE_BACK_MAIN_MENU,
                         "buttons": [
                             {
@@ -462,7 +462,7 @@ let getDetailViewChickenTemplate = () => {
                     },
                     {
                         "title": "Quay trở lại",
-                        "subtitle": "QUay trở Lại Menu chính",
+                        "subtitle": "Quay trở lại menu buổi trưa",
                         "image_url": IMAGE_BACK_MAIN_MENU,
                         "buttons": [
                             {
@@ -503,7 +503,7 @@ let getDetailViewMeatTemplate = () => {
                     },
                     {
                         "title": "Quay trở lại",
-                        "subtitle": "QUay trở Lại Menu chính",
+                        "subtitle": "Quay trở lại menu buổi trưa",
                         "image_url": IMAGE_BACK_MAIN_MENU,
                         "buttons": [
                             {
@@ -544,7 +544,7 @@ let getDetailViewDessertTemplate = () => {
                     },
                     {
                         "title": "Quay trở lại",
-                        "subtitle": "QUay trở Lại Menu chính",
+                        "subtitle": "Quay trở lại menu buổi trưa",
                         "image_url": IMAGE_BACK_MAIN_MENU,
                         "buttons": [
                             {
@@ -607,6 +607,7 @@ module.exports = {
     handleSendLunchMainMenu,
     handleSendDinnerMainMenu,
     handleBackToMainMenu,
+    handleBackToLunchMainMenu,
     handleDetailViewAppetizers,
     handleDetailViewChicken,
     handleDetailViewMeat,
