@@ -30,7 +30,7 @@ const IMAGE_DETAIL_DESSERT_3 = 'https://forevermark.vn/wp-content/uploads/2023/0
 
 const IMAGE_BACK_MAIN_MENU = 'https://media.istockphoto.com/id/1079901206/vi/anh/k%E1%BA%BFt-xu%E1%BA%A5t-3d-n%E1%BB%99i-th%E1%BA%A5t-nh%C3%A0-h%C3%A0ng-sang-tr%E1%BB%8Dng.jpg?s=2048x2048&w=is&k=20&c=-8CeouwS86UEd5eGtkON8V7H-yZxy6OEzYKburc02Qs='
 
-let callSendAPI = (sender_psid, response) => {
+let callSendAPI = async (sender_psid, response) => {
     // Construct the message body
     let request_body = {
         "recipient": {
@@ -39,6 +39,8 @@ let callSendAPI = (sender_psid, response) => {
         "message": response
     }
 
+    await sendMarkReadMessage(sender_psid);
+    await sendTypingOn(sender_psid);
     // Send the HTTP request to the Messenger Platform
     request({
         "uri": "https://graph.facebook.com/v9.0/me/messages",
@@ -50,6 +52,52 @@ let callSendAPI = (sender_psid, response) => {
             console.log('message sent!')
         } else {
             console.error("Unable to send message:" + err);
+        }
+    });
+}
+let sendTypingOn = (sender_psid) => {
+    // Construct the message body
+    let request_body = {
+        "recipient": {
+            "id": sender_psid
+        },
+        "sender_action":"typing_on"
+    }
+
+    // Send the HTTP request to the Messenger Platform
+    request({
+        "uri": `https://graph.facebook.com/v2.6/me/messages?access_token=${PAGE_ACCESS_TOKEN}`,
+        "qs": { "access_token": PAGE_ACCESS_TOKEN },
+        "method": "POST",
+        "json": request_body
+    }, (err, res, body) => {
+        if (!err) {
+            console.log('Send typing on sent!')
+        } else {
+            console.error("Unable to send typing on:" + err);
+        }
+    });
+}
+let sendMarkReadMessage = (sender_psid) => {
+    // Construct the message body
+    let request_body = {
+        "recipient": {
+            "id": sender_psid
+        },
+        "sender_action":"mark_seen"
+    }
+
+    // Send the HTTP request to the Messenger Platform
+    request({
+        "uri": `https://graph.facebook.com/v2.6/me/messages?access_token=${PAGE_ACCESS_TOKEN}`,
+        "qs": { "access_token": PAGE_ACCESS_TOKEN },
+        "method": "POST",
+        "json": request_body
+    }, (err, res, body) => {
+        if (!err) {
+            console.log('Send mark seen sent!')
+        } else {
+            console.error("Unable to send mark seen:" + err);
         }
     });
 }
