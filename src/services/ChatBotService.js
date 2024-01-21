@@ -220,8 +220,8 @@ let getLunchMainMenuTemplate = () => {
                         ],
                     },
                     {
-                        "title": "Gà hấp",
-                        "subtitle": "Gà hấp lá chanh - Gà hấp bia",
+                        "title": "Gà",
+                        "subtitle": "Nhà hàng có nhiều món chế biến từ thịt gà hấp dẫn",
                         "image_url": IMAGE_VIEW_CHICKEN,
                         "buttons": [
                             {
@@ -232,8 +232,8 @@ let getLunchMainMenuTemplate = () => {
                         ],
                     },
                     {
-                        "title": "Bê",
-                        "subtitle": "Bê xào sả ớt - Bê hấp sả",
+                        "title": "Bò",
+                        "subtitle": "Nhà hàng có nhiều món chế biến từ thịt bò hấp dẫn",
                         "image_url": IMAGE_VIEW_MEAT,
                         "buttons": [
                             {
@@ -245,7 +245,7 @@ let getLunchMainMenuTemplate = () => {
                     },
                     {
                         "title": "Món tráng miệng",
-                        "subtitle": "Rau câu 7 màu",
+                        "subtitle": "Nhà hàng có nhiều món tráng miệng hấp dẫn",
                         "image_url": IMAGE_VIEW_DESSERT,
                         "buttons": [
                             {
@@ -379,6 +379,9 @@ let handleSendDinnerMainMenu = (sender_psid) => {
 let handleBackToMainMenu = async (sender_psid) => {
     await handleSendMainMenu(sender_psid);
 }
+let handleBackToLunchMainMenu = async (sender_psid) => {
+    await handleSendLunchMainMenu(sender_psid);
+}
 
 let handleDetailViewAppetizers = (sender_psid) => {
     return new Promise(async (resolve, reject) => {
@@ -423,7 +426,7 @@ let getDetailViewAppetizerTemplate = () => {
                             {
                                 "type": "postback",
                                 "title": "QUAY TRỞ LẠI",
-                                "payload": "BACK_TO_MAIN_MENU",
+                                "payload": "BACK_TO_LUNCH_MAIN_MENU",
                             },
                         ],
                     },
@@ -465,7 +468,7 @@ let getDetailViewChickenTemplate = () => {
                             {
                                 "type": "postback",
                                 "title": "QUAY TRỞ LẠI",
-                                "payload": "BACK_TO_MAIN_MENU",
+                                "payload": "BACK_TO_LUNCH_MAIN_MENU",
                             },
                         ],
                     },
@@ -506,7 +509,7 @@ let getDetailViewMeatTemplate = () => {
                             {
                                 "type": "postback",
                                 "title": "QUAY TRỞ LẠI",
-                                "payload": "BACK_TO_MAIN_MENU",
+                                "payload": "BACK_TO_LUNCH_MAIN_MENU",
                             },
                         ],
                     },
@@ -547,7 +550,7 @@ let getDetailViewDessertTemplate = () => {
                             {
                                 "type": "postback",
                                 "title": "QUAY TRỞ LẠI",
-                                "payload": "BACK_TO_MAIN_MENU",
+                                "payload": "BACK_TO_LUNCH_MAIN_MENU",
                             },
                         ],
                     },
