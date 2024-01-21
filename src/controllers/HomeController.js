@@ -149,7 +149,13 @@ async function handlePostback(sender_psid, received_postback) {
         case 'VIEW_CHICKEN':
 
         case 'VIEW_MEAT':
-            
+
+        case 'IMAGE_VIEW_DESSERT':
+
+        case 'IMAGE_BACK_MAIN_MENU':
+            await chatbotService.handleBackToMainMenu(sender_psid);
+            break;
+
         default:
             response = { "text": `Oop! I don't know responese with post back ${payload}` }
     }

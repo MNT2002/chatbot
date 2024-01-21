@@ -12,6 +12,8 @@ const IMAGE_VIEW_CHICKEN = 'https://yummyday.vn/uploads/images/ga-hap-la-chanh.j
 const IMAGE_VIEW_MEAT = 'https://adelaidetuanbao.com/wp-content/uploads/2022/04/cach-lam-thit-be-xao-sa-ot.jpg'
 const IMAGE_VIEW_DESSERT= 'https://i.ytimg.com/vi/5aYmxWf2JH8/maxresdefault.jpg'
 
+const IMAGE_BACK_MAIN_MENU = 'https://media.istockphoto.com/id/1079901206/vi/anh/k%E1%BA%BFt-xu%E1%BA%A5t-3d-n%E1%BB%99i-th%E1%BA%A5t-nh%C3%A0-h%C3%A0ng-sang-tr%E1%BB%8Dng.jpg?s=2048x2048&w=is&k=20&c=-8CeouwS86UEd5eGtkON8V7H-yZxy6OEzYKburc02Qs='
+
 let callSendAPI = (sender_psid, response) => {
     // Construct the message body
     let request_body = {
@@ -237,6 +239,18 @@ let getLunchMainMenuTemplate = () => {
                             },
                         ],
                     },
+                    {
+                        "title": "Quay trở lại",
+                        "subtitle": "QUay trở Lại Menu chính",
+                        "image_url": IMAGE_BACK_MAIN_MENU,
+                        "buttons": [
+                            {
+                                "type": "postback",
+                                "title": "QUAY TRỞ LẠI",
+                                "payload": "BACK_TO_MAIN_MENU",
+                            },
+                        ],
+                    },
 
                 ]
             }
@@ -327,9 +341,14 @@ let handleSendDinnerMainMenu = (sender_psid) => {
     })
 }
 
+let handleBackToMainMenu = async (sender_psid) => {
+    await handleSendMainMenu(sender_psid);
+}
+
 module.exports = {
     handleGetStarted,
     handleSendMainMenu,
     handleSendLunchMainMenu,
     handleSendDinnerMainMenu,
+    handleBackToMainMenu,
 }
