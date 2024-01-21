@@ -1,16 +1,22 @@
-(function (d, s, id) {
-    var js, fjs = d.getElementsByTagName(s)[0];
-    if (d.getElementById(id)) { return; }
-    js = d.createElement(s); js.id = id;
-    js.src = "//connect.facebook.net/en_US/messenger.Extensions.js";
-    fjs.parentNode.insertBefore(js, fjs);
+(function(d, s, id){
+  var js, fjs = d.getElementsByTagName(s)[0];
+  if (d.getElementById(id)) {return;}
+  js = d.createElement(s); js.id = id;
+  js.src = "//connect.facebook.net/en_US/messenger.Extensions.js";
+  fjs.parentNode.insertBefore(js, fjs);
 }(document, 'script', 'Messenger'));
 
 window.extAsyncInit = function () {
     // the Messenger Extensions JS SDK is done loading 
-
-    MessengerExtensions.getContext('379701491271691',
-        function success(thread_context) {
+    MessengerExtensions.getSupportedFeatures(function success(result) {
+        let features = result.supported_features;
+        console.log(features)
+      }, function error(err) {
+        // error retrieving supported features
+        console.log(err)
+      });
+    MessengerExtensions.getContext('379701491271691', 
+    function success(thread_context){
             // success
             //set psid to input
             $("#psid").val(thread_context.psid);
@@ -50,7 +56,6 @@ function validateInputFields() {
 
 function handleClickButtonReserveTable() {
     $("#btnReserveTable").on("click", function (e) {
-        console.log('check button: ')
         let check = validateInputFields(); //return true or false
 
         let data = {
