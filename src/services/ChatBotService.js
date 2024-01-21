@@ -4,6 +4,9 @@ import request from "request";
 const PAGE_ACCESS_TOKEN = process.env.PAGE_ACCESS_TOKEN
 
 const IMAGE_GET_STARTED = 'https://media.istockphoto.com/id/1079901206/vi/anh/k%E1%BA%BFt-xu%E1%BA%A5t-3d-n%E1%BB%99i-th%E1%BA%A5t-nh%C3%A0-h%C3%A0ng-sang-tr%E1%BB%8Dng.jpg?s=2048x2048&w=is&k=20&c=-8CeouwS86UEd5eGtkON8V7H-yZxy6OEzYKburc02Qs='
+const IMAGE_MAIN_MENU_TABLE = 'https://th.bing.com/th/id/OIP.PDLQVIn6xQSHaFT9ndvzbgHaEK?w=289&h=180&c=7&r=0&o=5&dpr=1.3&pid=1.7'
+const IMAGE_MAIN_MENU_OPENHOUR = 'https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcSNWDm0CvVK8gTe9tk9K-wW_xIpvyodIndzrw&usqp=CAU'
+const IMAGE_MAIN_MENU_SPACE = 'https://maisonmando.com/wp-content/uploads/2019/11/khong-gian-nha-hang-maison-mando-7.jpg'
 
 let callSendAPI = (sender_psid, response) => {
     // Construct the message body
@@ -115,7 +118,7 @@ let getMainMenuTemplate = () => {
                     {
                         "title": "Menu của nhà hàng",
                         "subtitle": "Chúng tôi hân hạnh mang đến cho bạn thực đơn phong phú cho bữa trưa hoặc bữa tối.",
-                        "image_url": IMAGE_GET_STARTED,
+                        "image_url": IMAGE_MAIN_MENU_TABLE,
                         "buttons": [
                             {
                                 "type": "postback",
@@ -131,8 +134,8 @@ let getMainMenuTemplate = () => {
                     },
                     {
                         "title": "Giờ mở cửa",
-                        "subtitle": "T2 - T6 10 giờ - 11 giờ || T7 17 giờ - 22 giờ || CN 17 giờ - 21 giờ ",
-                        "image_url": IMAGE_GET_STARTED,
+                        "subtitle": "T2 - T6 10 giờ - 11 giờ | T7 17 giờ - 22 giờ | CN 17 giờ - 21 giờ ",
+                        "image_url": IMAGE_MAIN_MENU_OPENHOUR,
                         "buttons": [
                             {
                                 "type": "postback",
@@ -144,7 +147,7 @@ let getMainMenuTemplate = () => {
                     {
                         "title": "Không gian nhà hàng",
                         "subtitle": "Nhà hàng có sức chưa lên đến 300 ghế ngồi và phục vụ các bữa tiếc lớn",
-                        "image_url": IMAGE_GET_STARTED,
+                        "image_url": IMAGE_MAIN_MENU_SPACE,
                         "buttons": [
                             {
                                 "type": "postback",
