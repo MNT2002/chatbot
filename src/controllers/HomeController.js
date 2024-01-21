@@ -130,6 +130,7 @@ async function handlePostback(sender_psid, received_postback) {
         case 'no':
             response = { "text": "Oops, try sending another image." }
             break;
+        case 'RESTART_BOT':
         case 'GET_STARTED':
             await chatbotService.handleGetStarted(sender_psid);
             break;
@@ -176,8 +177,9 @@ let setupProfile = async (req, res) => {
         },
         "whitelisted_domains": [
             "https://minhnhattran-chatbot.onrender.com/"
-        ]
+        ],
     }
+
 
     // Send the HTTP request to the Messenger Platform
     await request({
@@ -196,10 +198,57 @@ let setupProfile = async (req, res) => {
 
     return res.send("Setup user profile succeeds!");
 }
+let setupPersistentMenu = async (req, res) => {
+    // Call profile facebook api
+    // Construct the message body
+    let request_body = {
+        "psid": "<PSID>",
+        "persistent_menu": [
+            {
+                "locale": "default",
+                "composer_input_disabled": false,
+                "call_to_actions": [
+                    {
+                        "type": "web_url",
+                        "title": "Youtuve channel MinhNhatTran",
+                        "url": "https://www.youtube.com/channel/UCgBcZ4eviTMXzr1Mqwmf0_g",
+                        "webview_height_ratio": "full"
+                    },
+                    {
+                        "type": "web_url",
+                        "title": "Facebook của MinhNhatTran",
+                        "url": "https://www.facebook.com/minhnhattrannn",
+                        "webview_height_ratio": "full"
+                    },
+                    {
+                        "type": "postback",
+                        "title": "Khởi động lại bot",
+                        "payload": "RESTART_BOT"
+                    },
+                ]
+            }
+        ]
+    }
+    // Send the HTTP request to the Messenger Platform
+    await request({
+        "uri": `https://graph.facebook.com/v18.0/me/messenger_profile?access_token=${PAGE_ACCESS_TOKEN}`,
+        "qs": { "access_token": PAGE_ACCESS_TOKEN },
+        "method": "POST",
+        "json": request_body
+    }, (err, res, body) => {
+        console.log(body);
+        if (!err) {
+            console.log('Setup persistent menu succeeds!')
+        } else {
+            console.error("Unable to setup persistent menu: " + err);
+        }
+    });
+}
 
 module.exports = {
     getHomePage,
     postWebhook,
     getWebhook,
     setupProfile,
+    setupPersistentMenu,
 }
