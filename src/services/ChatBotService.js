@@ -178,7 +178,142 @@ let handleSendMainMenu = (sender_psid) => {
     })
 }
 
+let getLunchMainMenuTemplate = () => {
+    let response = {
+        "attachment": {
+            "type": "template",
+            "payload": {
+                "template_type": "generic",
+                "elements": [
+                    {
+                        "title": "Món khai vị",
+                        "subtitle": "Nhà hàng có nhiều món khai vị hấp dẫn",
+                        "image_url": IMAGE_MAIN_MENU_TABLE,
+                        "buttons": [
+                            {
+                                "type": "postback",
+                                "title": "XEM CHI TIẾT",
+                                "payload": "VIEW_APPETIZERS",
+                            },
+                        ],
+                    },
+                    {
+                        "title": "Gà hấp",
+                        "subtitle": "Gà hấp lá chanh - Gà hấp bia",
+                        "image_url": IMAGE_MAIN_MENU_OPENHOUR,
+                        "buttons": [
+                            {
+                                "type": "postback",
+                                "title": "XEM CHI TIẾT",
+                                "payload": "VIEW_CHICKEN",
+                            },
+                        ],
+                    },
+                    {
+                        "title": "Bê",
+                        "subtitle": "Bê xào sả ớt - Bê hấp sả",
+                        "image_url": IMAGE_MAIN_MENU_OPENHOUR,
+                        "buttons": [
+                            {
+                                "type": "postback",
+                                "title": "XEM CHI TIẾT",
+                                "payload": "VIEW_MEAT",
+                            },
+                        ],
+                    },
+
+                ]
+            }
+        }
+    }
+    return response;
+}
+let handleSendLunchMainMenu = (sender_psid) => {
+    return new Promise(async (resolve, reject) => {
+        try {
+            let response1 = getLunchMainMenuTemplate();
+
+            // send generic template message
+            await callSendAPI(sender_psid, response1)
+            resolve('Done');
+        } catch (error) {
+            reject(error);
+        }
+    })
+}
+
+let getDinnerMainMenuTemplate = () => {
+    let response = {
+        "attachment": {
+            "type": "template",
+            "payload": {
+                "template_type": "generic",
+                "elements": [
+                    {
+                        "title": "Menu của nhà hàng",
+                        "subtitle": "Chúng tôi hân hạnh mang đến cho bạn thực đơn phong phú cho bữa trưa hoặc bữa tối.",
+                        "image_url": IMAGE_MAIN_MENU_TABLE,
+                        "buttons": [
+                            {
+                                "type": "postback",
+                                "title": "BỮA TRƯA",
+                                "payload": "LUNCH_MENU",
+                            },
+                            {
+                                "type": "postback",
+                                "title": "BỮA TỐI",
+                                "payload": "DINNER_MENU",
+                            },
+                        ],
+                    },
+                    {
+                        "title": "Giờ mở cửa",
+                        "subtitle": "T2 - T6 10 giờ - 11 giờ | T7 17 giờ - 22 giờ | CN 17 giờ - 21 giờ ",
+                        "image_url": IMAGE_MAIN_MENU_OPENHOUR,
+                        "buttons": [
+                            {
+                                "type": "postback",
+                                "title": "ĐẶT BÀN",
+                                "payload": "RESERVE_TABLE",
+                            },
+                        ],
+                    },
+                    {
+                        "title": "Không gian nhà hàng",
+                        "subtitle": "Nhà hàng có sức chưa lên đến 300 ghế ngồi và phục vụ các bữa tiếc lớn",
+                        "image_url": IMAGE_MAIN_MENU_SPACE,
+                        "buttons": [
+                            {
+                                "type": "postback",
+                                "title": "CHI TIẾT",
+                                "payload": "SHOW_ROOMS",
+                            },
+                        ],
+                    },
+
+                ]
+            }
+        }
+    }
+    return response;
+}
+let handleSendDinnerMainMenu = (sender_psid) => {
+    return new Promise(async (resolve, reject) => {
+        try {
+            let response1 = getDinnerMainMenuTemplate();
+
+            // send generic template message
+            await callSendAPI(sender_psid, response1)
+            resolve('Done');
+        } catch (error) {
+            reject(error);
+        }
+    })
+}
+
 module.exports = {
     handleGetStarted,
     handleSendMainMenu,
+    handleSendLunchMainMenu,
+    handleSendDinnerMainMenu,
 }
