@@ -7,6 +7,10 @@ const IMAGE_GET_STARTED = 'https://media.istockphoto.com/id/1079901206/vi/anh/k%
 const IMAGE_MAIN_MENU_TABLE = 'https://th.bing.com/th/id/OIP.PDLQVIn6xQSHaFT9ndvzbgHaEK?w=289&h=180&c=7&r=0&o=5&dpr=1.3&pid=1.7'
 const IMAGE_MAIN_MENU_OPENHOUR = 'https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcSNWDm0CvVK8gTe9tk9K-wW_xIpvyodIndzrw&usqp=CAU'
 const IMAGE_MAIN_MENU_SPACE = 'https://maisonmando.com/wp-content/uploads/2019/11/khong-gian-nha-hang-maison-mando-7.jpg'
+const IMAGE_VIEW_APPETIZERS = 'https://forevermark.vn/wp-content/uploads/2023/04/y-nghia-mon-khai-vi-tiec-cuoi.jpg'
+const IMAGE_VIEW_CHICKEN = 'https://yummyday.vn/uploads/images/ga-hap-la-chanh.jpg'
+const IMAGE_VIEW_MEAT = 'https://adelaidetuanbao.com/wp-content/uploads/2022/04/cach-lam-thit-be-xao-sa-ot.jpg'
+const IMAGE_VIEW_DESSERT= 'https://i.ytimg.com/vi/5aYmxWf2JH8/maxresdefault.jpg'
 
 let callSendAPI = (sender_psid, response) => {
     // Construct the message body
@@ -188,7 +192,7 @@ let getLunchMainMenuTemplate = () => {
                     {
                         "title": "Món khai vị",
                         "subtitle": "Nhà hàng có nhiều món khai vị hấp dẫn",
-                        "image_url": IMAGE_MAIN_MENU_TABLE,
+                        "image_url": IMAGE_VIEW_APPETIZERS,
                         "buttons": [
                             {
                                 "type": "postback",
@@ -200,7 +204,7 @@ let getLunchMainMenuTemplate = () => {
                     {
                         "title": "Gà hấp",
                         "subtitle": "Gà hấp lá chanh - Gà hấp bia",
-                        "image_url": IMAGE_MAIN_MENU_OPENHOUR,
+                        "image_url": IMAGE_VIEW_CHICKEN,
                         "buttons": [
                             {
                                 "type": "postback",
@@ -212,12 +216,24 @@ let getLunchMainMenuTemplate = () => {
                     {
                         "title": "Bê",
                         "subtitle": "Bê xào sả ớt - Bê hấp sả",
-                        "image_url": IMAGE_MAIN_MENU_OPENHOUR,
+                        "image_url": IMAGE_VIEW_MEAT,
                         "buttons": [
                             {
                                 "type": "postback",
                                 "title": "XEM CHI TIẾT",
                                 "payload": "VIEW_MEAT",
+                            },
+                        ],
+                    },
+                    {
+                        "title": "Món tráng miệng",
+                        "subtitle": "Rau câu 7 màu",
+                        "image_url": IMAGE_VIEW_DESSERT,
+                        "buttons": [
+                            {
+                                "type": "postback",
+                                "title": "XEM CHI TIẾT",
+                                "payload": "IMAGE_VIEW_DESSERT",
                             },
                         ],
                     },
