@@ -32,13 +32,13 @@ let getUserName = (sender_psid,) => {
 
         // Send the HTTP request to the Messenger Platform
         request({
-            "uri": `https://graph.facebook.com/${sender_psid}?fields=first_name,last_name,profile_pic&access_token=${PAGE_ACCESS_TOKEN}`,
+            "uri": `https://graph.facebook.com/${sender_psid}?fields=first_name,last_name,name,profile_pic&access_token=${PAGE_ACCESS_TOKEN}`,
             "method": "GET",
         }, (err, res, body) => {
             console.log(body);
             if (!err) {
                 body = JSON.parse(body);
-                let username = `${body.last_name} ${body.first_name}`
+                let username = body.name;
                 resolve(username);
             } else {
                 console.error("Unable to send message:" + err);
