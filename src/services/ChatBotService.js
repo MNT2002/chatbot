@@ -50,26 +50,8 @@ let getUserName = (sender_psid,) => {
     });
 }
 
-let handleGetStarted = (sender_psid) => {
-    return new Promise(async (resolve, reject) => {
-        try {
-            let username = await getUserName(sender_psid);
-            let response1 = { "text": `Hi. Chào mừng bạn ${username}!` }
-            let response2 = sendGetStartedTemplate();
-            
-            // send text message
-            await callSendAPI(sender_psid, response1)
-            
-            // send generic template message
-            await callSendAPI(sender_psid, response2)
-            resolve('Done');
-        } catch (error) {
-            reject(error);
-        }
-    })
-}
 
-let sendGetStartedTemplate = () => {
+getStartedTemplate = () => {
     let response = {
         "attachment": {
             "type": "template",
@@ -103,7 +85,97 @@ let sendGetStartedTemplate = () => {
     return response;
 }
 
+
+let handleGetStarted = (sender_psid) => {
+    return new Promise(async (resolve, reject) => {
+        try {
+            let username = await getUserName(sender_psid);
+            let response1 = { "text": `Hi. Chào mừng bạn ${username}!` }
+            let response2 = getStartedTemplate();
+
+            // send text message
+            await callSendAPI(sender_psid, response1)
+
+            // send generic template message
+            await callSendAPI(sender_psid, response2)
+            resolve('Done');
+        } catch (error) {
+            reject(error);
+        }
+    })
+}
+
+let getMainMenuTemplate = () => {
+    let response = {
+        "attachment": {
+            "type": "template",
+            "payload": {
+                "template_type": "generic",
+                "elements": [
+                    {
+                        "title": "Menu của nhà hàng",
+                        "subtitle": "Chúng tôi hân hạnh mang đến cho bạn thực đơn phong phú cho bữa trưa hoặc bữa tối.",
+                        "image_url": IMAGE_GET_STARTED,
+                        "buttons": [
+                            {
+                                "type": "postback",
+                                "title": "BỮA TRƯA",
+                                "payload": "LUNCH_MENU",
+                            },
+                            {
+                                "type": "postback",
+                                "title": "BỮA TỐI",
+                                "payload": "DINNER_MENU",
+                            },
+                        ],
+                    },
+                    {
+                        "title": "Giờ mở cửa",
+                        "subtitle": "T2 - T6 10 giờ - 11 giờ || T7 17 giờ - 22 giờ || CN 17 giờ - 21 giờ ",
+                        "image_url": IMAGE_GET_STARTED,
+                        "buttons": [
+                            {
+                                "type": "postback",
+                                "title": "ĐẶT BÀN",
+                                "payload": "RESERVE_TABLE",
+                            },
+                        ],
+                    },
+                    {
+                        "title": "Không gian nhà hàng",
+                        "subtitle": "Nhà hàng có sức chưa lên đến 300 ghế ngồi và phục vụ các bữa tiếc lớn",
+                        "image_url": IMAGE_GET_STARTED,
+                        "buttons": [
+                            {
+                                "type": "postback",
+                                "title": "CHI TIẾT",
+                                "payload": "SHOW_ROOMS",
+                            },
+                        ],
+                    },
+
+                ]
+            }
+        }
+    }
+    return response;
+}
+
+let handleSendMainMenu = (sender_psid) => {
+    return new Promise(async (resolve, reject) => {
+        try {
+            let response1 = getMainMenuTemplate();
+
+            // send generic template message
+            await callSendAPI(sender_psid, response1)
+            resolve('Done');
+        } catch (error) {
+            reject(error);
+        }
+    })
+}
+
 module.exports = {
     handleGetStarted,
-
+    handleSendMainMenu,
 }

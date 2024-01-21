@@ -134,7 +134,9 @@ async function handlePostback(sender_psid, received_postback) {
         case 'GET_STARTED':
             await chatbotService.handleGetStarted(sender_psid);
             break;
-
+        case 'MAIN_MENU':
+            await chatbotService.handleSendMainMenu(sender_psid);
+            break;
         default:
             response = { "text": `Oop! I don't know responese with post back ${payload}` }
     }
