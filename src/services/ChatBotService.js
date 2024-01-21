@@ -10,7 +10,23 @@ const IMAGE_MAIN_MENU_SPACE = 'https://maisonmando.com/wp-content/uploads/2019/1
 const IMAGE_VIEW_APPETIZERS = 'https://forevermark.vn/wp-content/uploads/2023/04/y-nghia-mon-khai-vi-tiec-cuoi.jpg'
 const IMAGE_VIEW_CHICKEN = 'https://yummyday.vn/uploads/images/ga-hap-la-chanh.jpg'
 const IMAGE_VIEW_MEAT = 'https://adelaidetuanbao.com/wp-content/uploads/2022/04/cach-lam-thit-be-xao-sa-ot.jpg'
-const IMAGE_VIEW_DESSERT= 'https://i.ytimg.com/vi/5aYmxWf2JH8/maxresdefault.jpg'
+const IMAGE_VIEW_DESSERT = 'https://i.ytimg.com/vi/5aYmxWf2JH8/maxresdefault.jpg'
+
+const IMAGE_DETAIL_APPERTIZER_1 = 'https://cdn.tgdd.vn/Files/2022/04/04/1423782/goi-y-8-mon-nguoi-khai-vi-cho-nhung-buoi-tiec-hoi-hop-voi-gia-dinh-202204040912057499.jpg'
+const IMAGE_DETAIL_APPERTIZER_2 = 'https://cdn.tgdd.vn/Files/2022/04/04/1423782/goi-y-8-mon-nguoi-khai-vi-cho-nhung-buoi-tiec-hoi-hop-voi-gia-dinh-202204040914134517.jpg'
+const IMAGE_DETAIL_APPERTIZER_3 = 'https://cdn.tgdd.vn/Files/2022/04/04/1423782/goi-y-8-mon-nguoi-khai-vi-cho-nhung-buoi-tiec-hoi-hop-voi-gia-dinh-202204040915196807.jpg'
+
+const IMAGE_DETAIL_CHICKEN_1 = 'https://cdn.tgdd.vn/Files/2020/11/30/1310299/tong-hop-cac-mon-ngon-tu-ga-sieu-ngon-de-nau-tai-nha-202011300908140722.jpg'
+const IMAGE_DETAIL_CHICKEN_2 = 'https://cdn.tgdd.vn/Files/2020/11/30/1310299/tong-hop-cac-mon-ngon-tu-ga-sieu-ngon-de-nau-tai-nha-202011300909335312.jpg'
+const IMAGE_DETAIL_CHICKEN_3 = 'https://cdn.tgdd.vn/Files/2020/11/30/1310299/tong-hop-cac-mon-ngon-tu-ga-sieu-ngon-de-nau-tai-nha-202011300911079997.jpg'
+
+const IMAGE_DETAIL_MEAT_1 = 'https://forevermark.vn/wp-content/uploads/2023/06/bo-cuon-pho-mai-1.jpg'
+const IMAGE_DETAIL_MEAT_2 = 'https://forevermark.vn/wp-content/uploads/2023/06/bo-sot-chanh-day-1.jpg'
+const IMAGE_DETAIL_MEAT_3 = 'https://forevermark.vn/wp-content/uploads/2023/06/thit-bo-chien-xu.jpg'
+
+const IMAGE_DETAIL_DESSERT_1 = 'https://forevermark.vn/wp-content/uploads/2023/04/cac-loai-trai-cay-trang-mieng-dam-cuoi.jpg'
+const IMAGE_DETAIL_DESSERT_2 = 'https://forevermark.vn/wp-content/uploads/2023/04/cac-loai-banh-trang-mieng-dam-cuoi.jpg'
+const IMAGE_DETAIL_DESSERT_3 = 'https://forevermark.vn/wp-content/uploads/2023/04/cac-loai-kem-sua-chua-trang-mieng-dam-cuoi.jpg'
 
 const IMAGE_BACK_MAIN_MENU = 'https://media.istockphoto.com/id/1079901206/vi/anh/k%E1%BA%BFt-xu%E1%BA%A5t-3d-n%E1%BB%99i-th%E1%BA%A5t-nh%C3%A0-h%C3%A0ng-sang-tr%E1%BB%8Dng.jpg?s=2048x2048&w=is&k=20&c=-8CeouwS86UEd5eGtkON8V7H-yZxy6OEzYKburc02Qs='
 
@@ -235,7 +251,7 @@ let getLunchMainMenuTemplate = () => {
                             {
                                 "type": "postback",
                                 "title": "XEM CHI TIẾT",
-                                "payload": "IMAGE_VIEW_DESSERT",
+                                "payload": "VIEW_DESSERT",
                             },
                         ],
                     },
@@ -280,43 +296,62 @@ let getDinnerMainMenuTemplate = () => {
                 "template_type": "generic",
                 "elements": [
                     {
-                        "title": "Menu của nhà hàng",
-                        "subtitle": "Chúng tôi hân hạnh mang đến cho bạn thực đơn phong phú cho bữa trưa hoặc bữa tối.",
-                        "image_url": IMAGE_MAIN_MENU_TABLE,
+                        "title": "Món khai vị",
+                        "subtitle": "Nhà hàng có nhiều món khai vị hấp dẫn",
+                        "image_url": IMAGE_VIEW_APPETIZERS,
                         "buttons": [
                             {
                                 "type": "postback",
-                                "title": "BỮA TRƯA",
-                                "payload": "LUNCH_MENU",
-                            },
-                            {
-                                "type": "postback",
-                                "title": "BỮA TỐI",
-                                "payload": "DINNER_MENU",
+                                "title": "XEM CHI TIẾT",
+                                "payload": "VIEW_APPETIZERS",
                             },
                         ],
                     },
                     {
-                        "title": "Giờ mở cửa",
-                        "subtitle": "T2 - T6 10 giờ - 11 giờ | T7 17 giờ - 22 giờ | CN 17 giờ - 21 giờ ",
-                        "image_url": IMAGE_MAIN_MENU_OPENHOUR,
+                        "title": "Gà hấp",
+                        "subtitle": "Gà hấp lá chanh - Gà hấp bia",
+                        "image_url": IMAGE_VIEW_CHICKEN,
                         "buttons": [
                             {
                                 "type": "postback",
-                                "title": "ĐẶT BÀN",
-                                "payload": "RESERVE_TABLE",
+                                "title": "XEM CHI TIẾT",
+                                "payload": "VIEW_CHICKEN",
                             },
                         ],
                     },
                     {
-                        "title": "Không gian nhà hàng",
-                        "subtitle": "Nhà hàng có sức chưa lên đến 300 ghế ngồi và phục vụ các bữa tiếc lớn",
-                        "image_url": IMAGE_MAIN_MENU_SPACE,
+                        "title": "Bê",
+                        "subtitle": "Bê xào sả ớt - Bê hấp sả",
+                        "image_url": IMAGE_VIEW_MEAT,
                         "buttons": [
                             {
                                 "type": "postback",
-                                "title": "CHI TIẾT",
-                                "payload": "SHOW_ROOMS",
+                                "title": "XEM CHI TIẾT",
+                                "payload": "VIEW_MEAT",
+                            },
+                        ],
+                    },
+                    {
+                        "title": "Món tráng miệng",
+                        "subtitle": "Rau câu 7 màu",
+                        "image_url": IMAGE_VIEW_DESSERT,
+                        "buttons": [
+                            {
+                                "type": "postback",
+                                "title": "XEM CHI TIẾT",
+                                "payload": "VIEW_DESSERT",
+                            },
+                        ],
+                    },
+                    {
+                        "title": "Quay trở lại",
+                        "subtitle": "QUay trở Lại Menu chính",
+                        "image_url": IMAGE_BACK_MAIN_MENU,
+                        "buttons": [
+                            {
+                                "type": "postback",
+                                "title": "QUAY TRỞ LẠI",
+                                "payload": "BACK_TO_MAIN_MENU",
                             },
                         ],
                     },
@@ -345,10 +380,232 @@ let handleBackToMainMenu = async (sender_psid) => {
     await handleSendMainMenu(sender_psid);
 }
 
+let handleDetailViewAppetizers = (sender_psid) => {
+    return new Promise(async (resolve, reject) => {
+        try {
+            let response1 = getDetailViewAppetizerTemplate();
+
+            // send generic template message
+            await callSendAPI(sender_psid, response1)
+            resolve('Done');
+        } catch (error) {
+            reject(error);
+        }
+    })
+}
+let getDetailViewAppetizerTemplate = () => {
+    let response = {
+        "attachment": {
+            "type": "template",
+            "payload": {
+                "template_type": "generic",
+                "elements": [
+                    {
+                        "title": "Gỏi củ hủ dừa",
+                        "subtitle": "30.000đ/1kg",
+                        "image_url": IMAGE_DETAIL_APPERTIZER_1,
+                    },
+                    {
+                        "title": "Gỏi ngó sen tôm thịt",
+                        "subtitle": "50.000đ/1kg",
+                        "image_url": IMAGE_DETAIL_APPERTIZER_2,
+                    },
+                    {
+                        "title": "Thịt nguội bát bửu",
+                        "subtitle": "20.000đ/1kg",
+                        "image_url": IMAGE_DETAIL_APPERTIZER_3,
+                    },
+                    {
+                        "title": "Quay trở lại",
+                        "subtitle": "QUay trở Lại Menu chính",
+                        "image_url": IMAGE_BACK_MAIN_MENU,
+                        "buttons": [
+                            {
+                                "type": "postback",
+                                "title": "QUAY TRỞ LẠI",
+                                "payload": "BACK_TO_MAIN_MENU",
+                            },
+                        ],
+                    },
+
+                ]
+            }
+        }
+    }
+    return response;
+}
+
+let getDetailViewChickenTemplate = () => {
+    let response = {
+        "attachment": {
+            "type": "template",
+            "payload": {
+                "template_type": "generic",
+                "elements": [
+                    {
+                        "title": "Gà hấp nước mắm",
+                        "subtitle": "280.000đ/phần",
+                        "image_url": IMAGE_DETAIL_CHICKEN_1,
+                    },
+                    {
+                        "title": "Gà luộc nước dừa",
+                        "subtitle": "250.000đ/phần",
+                        "image_url": IMAGE_DETAIL_CHICKEN_2,
+                    },
+                    {
+                        "title": "Lẩu gà thuốc bác",
+                        "subtitle": "280.000đ/phần",
+                        "image_url": IMAGE_DETAIL_CHICKEN_3,
+                    },
+                    {
+                        "title": "Quay trở lại",
+                        "subtitle": "QUay trở Lại Menu chính",
+                        "image_url": IMAGE_BACK_MAIN_MENU,
+                        "buttons": [
+                            {
+                                "type": "postback",
+                                "title": "QUAY TRỞ LẠI",
+                                "payload": "BACK_TO_MAIN_MENU",
+                            },
+                        ],
+                    },
+
+                ]
+            }
+        }
+    }
+    return response;
+}
+let getDetailViewMeatTemplate = () => {
+    let response = {
+        "attachment": {
+            "type": "template",
+            "payload": {
+                "template_type": "generic",
+                "elements": [
+                    {
+                        "title": "Bò cuộn phô mai",
+                        "subtitle": "350.000đ/phần",
+                        "image_url": IMAGE_DETAIL_MEAT_1,
+                    },
+                    {
+                        "title": "Bò sốt chanh dây",
+                        "subtitle": "300.000đ/phần",
+                        "image_url": IMAGE_DETAIL_MEAT_2,
+                    },
+                    {
+                        "title": "Thịt bò chiên xù",
+                        "subtitle": "320.000đ/phần",
+                        "image_url": IMAGE_DETAIL_MEAT_3,
+                    },
+                    {
+                        "title": "Quay trở lại",
+                        "subtitle": "QUay trở Lại Menu chính",
+                        "image_url": IMAGE_BACK_MAIN_MENU,
+                        "buttons": [
+                            {
+                                "type": "postback",
+                                "title": "QUAY TRỞ LẠI",
+                                "payload": "BACK_TO_MAIN_MENU",
+                            },
+                        ],
+                    },
+
+                ]
+            }
+        }
+    }
+    return response;
+}
+let getDetailViewDessertTemplate = () => {
+    let response = {
+        "attachment": {
+            "type": "template",
+            "payload": {
+                "template_type": "generic",
+                "elements": [
+                    {
+                        "title": "Trái cây tráng miệng",
+                        "subtitle": "200.000đ/phần",
+                        "image_url": IMAGE_DETAIL_DESSERT_1,
+                    },
+                    {
+                        "title": "Các loại bánh tráng miệng",
+                        "subtitle": "220.000đ/phần",
+                        "image_url": IMAGE_DETAIL_DESSERT_2,
+                    },
+                    {
+                        "title": "Kem/Sữa chua",
+                        "subtitle": "220.000đ/phần",
+                        "image_url": IMAGE_DETAIL_DESSERT_3,
+                    },
+                    {
+                        "title": "Quay trở lại",
+                        "subtitle": "QUay trở Lại Menu chính",
+                        "image_url": IMAGE_BACK_MAIN_MENU,
+                        "buttons": [
+                            {
+                                "type": "postback",
+                                "title": "QUAY TRỞ LẠI",
+                                "payload": "BACK_TO_MAIN_MENU",
+                            },
+                        ],
+                    },
+
+                ]
+            }
+        }
+    }
+    return response;
+}
+let handleDetailViewChicken = (sender_psid) => {
+    return new Promise(async (resolve, reject) => {
+        try {
+            let response1 = getDetailViewChickenTemplate();
+
+            // send generic template message
+            await callSendAPI(sender_psid, response1)
+            resolve('Done');
+        } catch (error) {
+            reject(error);
+        }
+    })
+}
+let handleDetailViewMeat = (sender_psid) => {
+    return new Promise(async (resolve, reject) => {
+        try {
+            let response1 = getDetailViewMeatTemplate();
+
+            // send generic template message
+            await callSendAPI(sender_psid, response1)
+            resolve('Done');
+        } catch (error) {
+            reject(error);
+        }
+    })
+}
+let handleDetailViewDessert = (sender_psid) => {
+    return new Promise(async (resolve, reject) => {
+        try {
+            let response1 = getDetailViewDessertTemplate();
+
+            // send generic template message
+            await callSendAPI(sender_psid, response1)
+            resolve('Done');
+        } catch (error) {
+            reject(error);
+        }
+    })
+}
+
 module.exports = {
     handleGetStarted,
     handleSendMainMenu,
     handleSendLunchMainMenu,
     handleSendDinnerMainMenu,
     handleBackToMainMenu,
+    handleDetailViewAppetizers,
+    handleDetailViewChicken,
+    handleDetailViewMeat,
+    handleDetailViewDessert,
 }
