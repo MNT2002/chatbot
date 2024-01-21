@@ -8,13 +8,7 @@
 
 window.extAsyncInit = function () {
     // the Messenger Extensions JS SDK is done loading 
-    MessengerExtensions.getSupportedFeatures(function success(result) {
-        let features = result.supported_features;
-        console.log(features)
-      }, function error(err) {
-        // error retrieving supported features
-        console.log(err)
-      });
+
     MessengerExtensions.getContext('379701491271691', 
     function success(thread_context){
             // success
