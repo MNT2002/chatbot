@@ -30,6 +30,8 @@ const IMAGE_DETAIL_DESSERT_3 = 'https://forevermark.vn/wp-content/uploads/2023/0
 
 const IMAGE_BACK_MAIN_MENU = 'https://media.istockphoto.com/id/1079901206/vi/anh/k%E1%BA%BFt-xu%E1%BA%A5t-3d-n%E1%BB%99i-th%E1%BA%A5t-nh%C3%A0-h%C3%A0ng-sang-tr%E1%BB%8Dng.jpg?s=2048x2048&w=is&k=20&c=-8CeouwS86UEd5eGtkON8V7H-yZxy6OEzYKburc02Qs='
 
+const IMAGE_DETAIL_ROOMS = 'https://phongcachmoc.vn/upload/images/tin-tuc/20%20mau%20nha%20hang%20dep/update-07-2022/noi-that-nha-hang-kokugyu-1.jpg'
+
 let callSendAPI = async (sender_psid, response) => {
     // Construct the message body
     let request_body = {
@@ -61,7 +63,7 @@ let sendTypingOn = (sender_psid) => {
         "recipient": {
             "id": sender_psid
         },
-        "sender_action":"typing_on"
+        "sender_action": "typing_on"
     }
 
     // Send the HTTP request to the Messenger Platform
@@ -84,7 +86,7 @@ let sendMarkReadMessage = (sender_psid) => {
         "recipient": {
             "id": sender_psid
         },
-        "sender_action":"mark_seen"
+        "sender_action": "mark_seen"
     }
 
     // Send the HTTP request to the Messenger Platform
@@ -649,6 +651,60 @@ let handleDetailViewDessert = (sender_psid) => {
     })
 }
 
+let getImageRoomTemplate = () => {
+    let response = {
+        "attachment": {
+            "type": "image",
+            "payload": {
+                "url": IMAGE_DETAIL_ROOMS,
+                "is_reusable": true
+            }
+        }
+    }
+    return response;
+}
+let getButtonRoomsTemplate = () => {
+    let response = {
+        "attachment": {
+            "type": "template",
+            "payload": {
+                "template_type": "button",
+                "text": "Nhà hàng có thể phục vụ tối đa 300 khách",
+                "buttons": [
+                    {
+                        "type": "postback",
+                        "title": "MENU CHÍNH",
+                        "payload": "MAIN_MENU"
+                    },
+                    {
+                        "type": "postback",
+                        "title": "ĐẶT BÀN",
+                        "payload": "RESERVE_TABLE"
+                    },
+                ]
+            }
+        }
+    }
+    return response;
+}
+let handleShowDetailRoom = (sender_psid) => {
+    return new Promise(async (resolve, reject) => {
+        try {
+            // send an image
+            let response1 = getImageRoomTemplate();
+            let response2 = getButtonRoomsTemplate();
+
+            // send a button template: text, buttons
+            // send generic template message
+            await callSendAPI(sender_psid, response1)
+            await callSendAPI(sender_psid, response2)
+            resolve('Done');
+        } catch (error) {
+            reject(error);
+        }
+    })
+}
+
 module.exports = {
     handleGetStarted,
     handleSendMainMenu,
@@ -660,4 +716,5 @@ module.exports = {
     handleDetailViewChicken,
     handleDetailViewMeat,
     handleDetailViewDessert,
+    handleShowDetailRoom,
 }
