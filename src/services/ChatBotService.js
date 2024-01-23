@@ -724,4 +724,5 @@ module.exports = {
     handleDetailViewMeat,
     handleDetailViewDessert,
     handleShowDetailRoom,
+    getUserName,
 }
