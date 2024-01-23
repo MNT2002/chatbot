@@ -178,20 +178,8 @@ let getStartedQuickReplyTemplate = (sender_psid) => {
                 "payload": "MAIN_MENU",
             },
             {
-                /**
-                 * "type": "web_url",
-                "url": `${process.env.URL_WEB_VIEW_ORDER}/${sender_psid}`,
-                "title": "ĐẶT BÀN",
-                "webview_height_ratio": "tall",
-                "messenger_extensions": true
-                 */
                 "content_type": "text",
-                "title": "ĐẶT BÀN",
-                "payload": "",
-            },
-            {
-                "content_type": "text",
-                "title": "HD SỬ DỤNG BOT",
+                "title": "HƯỚNG DẪN SỬ DỤNG BOT",
                 "payload": "GUIDE_TO_USE",
             }
         ]

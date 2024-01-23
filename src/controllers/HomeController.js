@@ -120,6 +120,7 @@ async function handleMessage(sender_psid, received_message) {
         if (received_message.quick_reply.payload === 'GUIDE_TO_USE') {
 
         }
+        return;
     }
 
     // Checks if the message contains text
