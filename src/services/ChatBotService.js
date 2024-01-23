@@ -31,6 +31,7 @@ const IMAGE_DETAIL_DESSERT_3 = 'https://forevermark.vn/wp-content/uploads/2023/0
 const IMAGE_BACK_MAIN_MENU = 'https://media.istockphoto.com/id/1079901206/vi/anh/k%E1%BA%BFt-xu%E1%BA%A5t-3d-n%E1%BB%99i-th%E1%BA%A5t-nh%C3%A0-h%C3%A0ng-sang-tr%E1%BB%8Dng.jpg?s=2048x2048&w=is&k=20&c=-8CeouwS86UEd5eGtkON8V7H-yZxy6OEzYKburc02Qs='
 
 const IMAGE_DETAIL_ROOMS = 'https://phongcachmoc.vn/upload/images/tin-tuc/20%20mau%20nha%20hang%20dep/update-07-2022/noi-that-nha-hang-kokugyu-1.jpg'
+const IMAGE_GIF_WELCOME = 'https://media1.giphy.com/media/iDITIbZ3XoMvOZ1NvO/giphy.gif?cid=ecf05e4733x0ishzemvkpqvsub2sfadjo8ldipbsjuswwbq0&ep=v1_gifs_search&rid=giphy.gif&ct=g';
 
 let callSendAPI = async (sender_psid, response) => {
     // Construct the message body
@@ -161,20 +162,71 @@ let getStartedTemplate = (sender_psid) => {
     }
     return response;
 }
+let getStartedQuickReplyTemplate = (sender_psid) => {
+    let response = {
+        "text": "Dưới đây là các lựa chọn cho nhà hàng:",
+        "quick_replies": [
+            {
+                "content_type": "text",
+                "title": "MENU CHÍNH",
+                "payload": "MAIN_MENU",
+            },
+            {
+                /**
+                 * "type": "web_url",
+                "url": `${process.env.URL_WEB_VIEW_ORDER}/${sender_psid}`,
+                "title": "ĐẶT BÀN",
+                "webview_height_ratio": "tall",
+                "messenger_extensions": true
+                 */
+                "content_type": "text",
+                "title": "ĐẶT BÀN",
+                "payload": "",
+            },
+            {
+                "content_type": "text",
+                "title": "HƯỚNG DẪN SỬ DỤNG BOT",
+                "payload": "GUIDE_TO_USE",
+            }
+        ]
+    }
 
+    return response;
+}
+let getImageGetStartedTemplate = () => {
+    let response = {
+        "attachment": {
+            "type": "image",
+            "payload": {
+                "url": IMAGE_GIF_WELCOME,
+                "is_reusable": true
+            }
+        }
+    }
+    return response;
+}
 
 let handleGetStarted = (sender_psid) => {
     return new Promise(async (resolve, reject) => {
         try {
             let username = await getUserName(sender_psid);
             let response1 = { "text": `Hi. Chào mừng bạn ${username}!` }
-            let response2 = getStartedTemplate(sender_psid);
+            // let response2 = getStartedTemplate(sender_psid);
+
+            // send an image 
+            let response2 = getImageGetStartedTemplate();
+
+            // send a quick reply
+            let response3 = getStartedQuickReplyTemplate(sender_psid);
 
             // send text message
             await callSendAPI(sender_psid, response1)
 
             // send generic template message
             await callSendAPI(sender_psid, response2)
+
+            // send generic template message
+            await callSendAPI(sender_psid, response3)
             resolve('Done');
         } catch (error) {
             reject(error);
