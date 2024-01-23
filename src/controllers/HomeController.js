@@ -38,7 +38,7 @@ let writeDataToGoogleSheet = async (data) => {
         {
             "Tên Facebook": data.username,
             "Địa chỉ Email": data.email,
-            "Số điện thoại": data.phoneNumber,
+            "Số điện thoại": `'${data.phoneNumber}`,
             "Thời gian": formatedDate,
             "Tên khách hàng": data.customerName
         });
@@ -326,8 +326,7 @@ let handleRerseveTable = (req, res) => {
 
 let handlePostReserveTable = async (req, res) => {
     try {
-        let username = req.body.psid
-
+        let username = await chatbotService.getUserName(req.body.psid)
         // write data to google sheet
         let data = {
             username: username,
@@ -339,7 +338,7 @@ let handlePostReserveTable = async (req, res) => {
 
         let customerName = "";
         if (req.body.customerName === "") {
-            customerName = await chatbotService.getUserName(username)
+            customerName = username
         } else customerName = req.body.customerName;
 
         let response1 = {
