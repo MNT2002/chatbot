@@ -34,29 +34,35 @@ const IMAGE_DETAIL_ROOMS = 'https://phongcachmoc.vn/upload/images/tin-tuc/20%20m
 const IMAGE_GIF_WELCOME = 'https://media1.giphy.com/media/iDITIbZ3XoMvOZ1NvO/giphy.gif?cid=ecf05e4733x0ishzemvkpqvsub2sfadjo8ldipbsjuswwbq0&ep=v1_gifs_search&rid=giphy.gif&ct=g';
 
 let callSendAPI = async (sender_psid, response) => {
-    // Construct the message body
-    let request_body = {
-        "recipient": {
-            "id": sender_psid
-        },
-        "message": response
-    }
+    return new Promise(async (resolve, reject) => {
+        try {
+            // Construct the message body
+            let request_body = {
+                "recipient": {
+                    "id": sender_psid
+                },
+                "message": response
+            }
 
-    await sendMarkReadMessage(sender_psid);
-    await sendTypingOn(sender_psid);
-    // Send the HTTP request to the Messenger Platform
-    request({
-        "uri": "https://graph.facebook.com/v9.0/me/messages",
-        "qs": { "access_token": PAGE_ACCESS_TOKEN },
-        "method": "POST",
-        "json": request_body
-    }, (err, res, body) => {
-        if (!err) {
-            console.log('message sent!')
-        } else {
-            console.error("Unable to send message:" + err);
+            await sendMarkReadMessage(sender_psid);
+            await sendTypingOn(sender_psid);
+            // Send the HTTP request to the Messenger Platform
+            request({
+                "uri": "https://graph.facebook.com/v9.0/me/messages",
+                "qs": { "access_token": PAGE_ACCESS_TOKEN },
+                "method": "POST",
+                "json": request_body
+            }, (err, res, body) => {
+                if (!err) {
+                    resolve('message sent!')
+                } else {
+                    console.error("Unable to send message:" + err);
+                }
+            });
+        } catch (error) {
+            reject(error)
         }
-    });
+    })
 }
 let sendTypingOn = (sender_psid) => {
     // Construct the message body
