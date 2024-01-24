@@ -769,7 +769,8 @@ let getBotMediaTemplate = () => {
                "elements": [
                   {
                      "media_type": "<image|video>",
-                     "attachment_id": "1761280597705342",
+                    //  "attachment_id": "1761280597705342",
+                    "url": "https://www.facebook.com/ChatbotWithMNT/videos/1761280597705342/",
                      "buttons": [
                         {
                             "type": "postback",
