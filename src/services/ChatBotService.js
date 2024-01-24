@@ -765,27 +765,27 @@ let getBotMediaTemplate = () => {
         "attachment": {
             "type": "template",
             "payload": {
-               "template_type": "media",
-               "elements": [
-                  {
-                     "media_type": "<image|video>",
-                    //  "attachment_id": "1761280597705342",
-                    "url": "https://www.facebook.com/ChatbotWithMNT/videos/1761280597705342/",
-                     "buttons": [
-                        {
-                            "type": "postback",
-                            "title": "MENU CHÍNH!",
-                            "payload": "MAIN_MENU",
-                        },
-                        {
-                            "type": "web_url",
-                            "url": `https://www.facebook.com/ChatbotWithMNT`,
-                            "title": "Facebook Page",
-                            "webview_height_ratio": "full",
-                        }
-                     ]
-                  }
-               ]
+                "template_type": "media",
+                "elements": [
+                    {
+                        "media_type": "video",
+                        //  "attachment_id": "1761280597705342",
+                        "url": "https://www.facebook.com/ChatbotWithMNT/videos/1761280597705342/",
+                        "buttons": [
+                            {
+                                "type": "postback",
+                                "title": "MENU CHÍNH!",
+                                "payload": "MAIN_MENU",
+                            },
+                            {
+                                "type": "web_url",
+                                "title": "Facebook Page",
+                                "url": `https://www.facebook.com/ChatbotWithMNT`,
+                                "webview_height_ratio": "full",
+                            }
+                        ]
+                    }
+                ]
             }
         }
     };
@@ -797,7 +797,7 @@ let handleGuideToUseBot = (sender_psid) => {
         try {
             // send an image
             let username = await getUserName(sender_psid);
-            let response1 = { "text": `Xin chào bạn ${username}, mình là chatbot with MinhNhatTran.\n Để biết thêm thông tin, vui lòng xem video bên dưới 😁`};
+            let response1 = { "text": `Xin chào bạn ${username}, mình là chatbot with MinhNhatTran.\n Để biết thêm thông tin, vui lòng xem video bên dưới 😁` };
             // send a media templates: video, button
             let response2 = getBotMediaTemplate();
 
