@@ -179,7 +179,7 @@ let getStartedQuickReplyTemplate = (sender_psid) => {
             },
             {
                 "content_type": "text",
-                "title": "HƯỚNG DẪN SỬ DỤNG BOT",
+                "title": "HD SỬ DỤNG BOT",
                 "payload": "GUIDE_TO_USE",
             }
         ]
@@ -757,6 +757,56 @@ let handleShowDetailRoom = (sender_psid) => {
     })
 }
 
+let getBotMediaTemplate = () => {
+    let response = {
+        "attachment": {
+            "type": "template",
+            "payload": {
+               "template_type": "media",
+               "elements": [
+                  {
+                     "media_type": "<image|video>",
+                     "attachment_id": "1761280597705342",
+                     "buttons": [
+                        {
+                            "type": "postback",
+                            "title": "MENU CHÍNH!",
+                            "payload": "MAIN_MENU",
+                        },
+                        {
+                            "type": "web_url",
+                            "url": `https://www.facebook.com/ChatbotWithMNT`,
+                            "title": "Facebook Page",
+                            "webview_height_ratio": "full",
+                        }
+                     ]
+                  }
+               ]
+            }
+        }
+    };
+
+    return response;
+}
+let handleGuideToUseBot = (sender_psid) => {
+    return new Promise(async (resolve, reject) => {
+        try {
+            // send an image
+            let username = await getUserName(sender_psid);
+            let response1 = { "text": `Xin chào bạn ${username}, mình là chatbot with MinhNhatTran.\n Để biết thêm thông tin, vui lòng xem video bên dưới 😁`};
+            // send a media templates: video, button
+            let response2 = getBotMediaTemplate();
+
+            // send generic template message
+            await callSendAPI(sender_psid, response1)
+            await callSendAPI(sender_psid, response2)
+            resolve('Done');
+        } catch (error) {
+            reject(error);
+        }
+    })
+}
+
 module.exports = {
     callSendAPI,
     handleGetStarted,
@@ -771,4 +821,5 @@ module.exports = {
     handleDetailViewDessert,
     handleShowDetailRoom,
     getUserName,
+    handleGuideToUseBot,
 }
